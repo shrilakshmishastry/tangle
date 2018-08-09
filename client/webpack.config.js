@@ -1,7 +1,9 @@
+const path = require('path');
+const webpack = require('webpack');
 module.exports={
-  entry:'',
+  entry:'/home/shri/tangle/client/index.js',
   output:{
-    path:'',
+    path:__dirname +'/dist',
     filename:'bundle.js'
   },
   devServer:{
@@ -9,7 +11,7 @@ module.exports={
     contentBase:'',
     port:8001
   },
-  moule:{
+  module:{
     rules:[
       {
         test:/\.jsx?/,
@@ -24,7 +26,7 @@ module.exports={
       test:/\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
       loader: 'file-loader?name=[name].[ext]'
     }
-      
+
     ]
   }
 }

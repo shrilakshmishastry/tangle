@@ -7,6 +7,7 @@ import {NavItem,Navbar,Collapse,
   DropdownMenu,
   DropdownItem,Button} from 'reactstrap';
 import {Link} from 'react-router-dom'
+
 // component for Navbar
 class Header extends React.Component{
   constructor(props){
@@ -29,7 +30,7 @@ class Header extends React.Component{
     return(
       <div>
       <Navbar color='light' light expand='md'  >
-      <NavbarBrand href='/' className='ml-md-5'>
+      <NavbarBrand href='/' className='ml-md-5  font-weight-bold text-dark '>
           Tangle
       </NavbarBrand>
         <NavbarToggler onClick={this.toggle}/>

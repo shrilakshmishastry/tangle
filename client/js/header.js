@@ -7,7 +7,10 @@ import {NavItem,Navbar,Collapse,
   DropdownMenu,
   DropdownItem,Button} from 'reactstrap';
 import {Link} from 'react-router-dom'
-
+// css for Header component
+const headerStyle={
+    fontFamily: 'Open Sans, sans-serif',
+};
 // component for Navbar
 class Header extends React.Component{
   constructor(props){
@@ -16,8 +19,9 @@ class Header extends React.Component{
     // state variable
     this.state={
       isOpen:false,
-      login:"login"
-    };
+      login:"login",
+      account:'Open an account'
+      };
 
   }
   // function to Collapse functionality
@@ -28,7 +32,7 @@ class Header extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div style={headerStyle}>
       <Navbar color='light' light expand='md'  >
       <NavbarBrand href='/' className='ml-md-5  font-weight-bold text-dark '>
           Tangle
@@ -37,10 +41,10 @@ class Header extends React.Component{
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto " navbar>
             <NavItem className=' mt-md-2'>
-              <Link to='#' className=' text-dark'>Myaccount</Link>
+              <Link to='#' className=' text-dark'>{this.state.account}</Link>
             </NavItem>
              <NavItem className='ml-md-5'>
-              <Link  className=' text-dark' to='/'>
+              <Link to='/login' className=' text-dark'>
                 <Button outline color="secondary">
                   {this.state.login}
                 </Button>

@@ -7,3 +7,6 @@ app.config['STATIC_FOLDER']='/home/shri/tangle/client/images'
 @app.route('/')
 def data():
     return render_template('home.html')
+@app.route('/login')
+def login():
+    return render_template('home.html')

@@ -15,10 +15,11 @@ class Signin extends React.Component{
           <Col md={{size:5,offset:4}} className='bg-black mt-md-5'>
           <Card>
           <CardBody>
-          <CardText className='mt-md-3 '>
-
-              By clicking the button below, I agree and 
+          <CardText className='mt-md-3 text-center'>
+            <small className='h6'>
+              By clicking the button below, I agree and
              authorize Tangle to access my accounts on behalf.
+           </small>
           </CardText>
           <Link to='/' >
             <Button className='bg-primary mt-md-2' block>

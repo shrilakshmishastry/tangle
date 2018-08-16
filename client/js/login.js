@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Row,Col,Container,InputGroup,Input,Button} from 'reactstrap';
+import {Link} from 'react-router-dom';
 require('./../images/landing_new.png');
 const loginStyle = {
   fontFamily:'Source Sans Pro sans-serif',
@@ -19,28 +20,22 @@ class Login extends React.Component{
             <h2 >Open your account now</h2>
             </Row>
             <Row className='ml-3 mt-3'>
+            <form>
               <InputGroup>
-                <Input className='mr-3' placeholder="Full name" required/>
-                <Input className="ml-3" placeholder="Password" required/>
+                <Input className='mr-3' placeholder="Full name" required='true'/>
+                <Input className="ml-3" placeholder="Password" required='true'/>
               </InputGroup>
               <InputGroup className='mt-2'>
-                <Input placeholder="Email"/>
+                <Input placeholder="Email"required='true'/>
               </InputGroup>
-              <InputGroup className='mt-3'>
-                <Button color='primary' block>
+                <InputGroup className='mt-3'>
+                  <Button color='primary' block>
                   <small>
                   CONTINUE TO SIGNUP
                   </small>
                 </Button>
               </InputGroup>
-              <InputGroup className='justify-content-center'>
-              <h5>or</h5>
-              </InputGroup>
-              <InputGroup className="text-white ">
-                <Button style={{background:'rgb(99, 179, 239)'}} block>
-                  <h5 className="pl-md-4 fa fa-twitter">{'  '}Login in with Twitter</h5>
-                </Button>
-              </InputGroup>
+              </form>
             </Row>
           </Col>
         </Row>

@@ -13,7 +13,7 @@ db.create_all()
 migrate = Migrate(app, db)
 from app import models
 from .models import User
-new=User(name='shri')
+new=User(name='shrihari',email='shrilakshmishastry@gmail.com',password='123',access_token='23345',access_token_secret='dqwdwdsd')
 db.session.add(new)
 db.session.commit()
 print(new.name)

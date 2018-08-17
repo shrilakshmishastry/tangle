@@ -1,5 +1,5 @@
 import React,{Component} from  'react';
-import {Col,Row,Container,Button,Card,CardBody,CardText} from 'reactstrap';
+import {Col,Row,Container,Button,Form,FormGroup,InputGroup,Input} from 'reactstrap';
 import {Link} from 'react-router-dom';
 require('./../images/landing.png')
 const siginStyle = {
@@ -7,31 +7,71 @@ const siginStyle = {
 }
 // Component for SIGNUP
 class Signin extends React.Component{
+  constructor(props){
+   super(props);
+   this.state = {
+     name:'',
+     password:'',
+     email:'',
+     login:''
+   };
+   this.handleChange=this.handleChange.bind(this);
+   this.handleSubmit=this.handleSubmit.bind(this);
+
+ }
+ handleChange(event){
+     this.setState({
+     [event.target.name]:event.target.value,
+     [event.target.name]:event.target.value,
+     [event.target.name]:event.target.value
+   });
+
+
+ }
+ handleSubmit(event){
+     event.preventDefault();
+         console.log(this.state.name);
+         console.log(this.state.password);
+ }
   render(){
     return(
-      <div className={siginStyle} >
-      <Container className='mt-5'>
-        <Row>
-          <Col md={{size:5,offset:4}} className='bg-black mt-md-5'>
-          <Card>
-          <CardBody>
-          <CardText className='mt-md-3 text-center'>
-            <small className='h6'>
-              By clicking the button below, I agree and
-             authorize Tangle to access my accounts on behalf.
-           </small>
-          </CardText>
-          <Link to='/' >
-            <Button className='bg-primary mt-md-2' block>
-            <small>  Agree and Create Account
-            </small>
-            </Button>
-          </Link>
-          </CardBody>
-          </Card>
-          </Col>
+      <div style={siginStyle} >
+      <Container className='mt-md-5'>
+    <Row >
+      <Col md={{size:4}} className='bg-white mt-md-5'>
+        <img src='/home/shri/tangle/client/dist/landing_new.png' />
+      </Col>
+      <Col md={{size:5,offset:2}}  >
+        <Row className="font-weight-light ml-3">
+        <h2 >Open your account now</h2>
         </Row>
-      </Container>
+        <Row className='ml-3 mt-3'>
+        <Form onSubmit={this.handleSubmit}>
+          <FormGroup >
+          <InputGroup>
+           <Input type='text' name='name' className='mr-3' placeholder="Full name" required='true' onChange={this.handleChange}/>
+           <Input type='password' name='password' className="ml-3" placeholder="Password" required='true' onChange={this.handleChange}/>
+         </InputGroup>
+         <InputGroup className='mt-2'>
+           <Input type='email' name='email' placeholder="Email"required='true' onChange={this.handleChange}/>
+         </InputGroup>
+           <InputGroup className='mt-3'>
+             <Button color='primary' block>
+             <small>
+             CONTINUE TO SIGNUP
+             </small>
+           </Button>
+         </InputGroup>
+         </FormGroup>
+        </Form>
+        <small className='mt-3'>
+        By clicking the button above, I agree and
+        authorize Tangle to access my accounts on behalf.
+        </small>
+        </Row>
+      </Col>
+    </Row>
+    </Container>
       </div>
     );
   }

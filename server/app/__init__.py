@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -17,16 +17,17 @@ migrate = Migrate(app, db)
 from app import models
 from .models import User
 
+from .login import login as login_blueprint
+app.register_blueprint(login_blueprint)
 
 #route to '/'
 @app.route('/')
 def data():
-    return render_template('home.html')
-# route to login
-@app.route('/login')
-def login():
+    if request.method == 'POST':
+        return ('hello world')
     return render_template('home.html')
 
+# route to signin
 @app.route('/signin')
 def signin():
     return render_template('home.html')

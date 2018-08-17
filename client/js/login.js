@@ -10,7 +10,6 @@ class Login extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      name:'',
       password:'',
       email:'',
       login:''
@@ -22,7 +21,6 @@ class Login extends React.Component{
   handleChange(event){
       this.setState({
       [event.target.name]:event.target.value,
-      [event.target.name]:event.target.value,
       [event.target.name]:event.target.value
     });
 
@@ -30,9 +28,9 @@ class Login extends React.Component{
   }
   handleSubmit(event){
       event.preventDefault();
+      console.log(this.state.password);
       axios.post('/login',
         {
-          name:this.state.name,
           password:this.state.password,
           email:this.state.email
       })
@@ -58,7 +56,7 @@ class Login extends React.Component{
             <Form onSubmit={this.handleSubmit}>
               <FormGroup >
               <InputGroup>
-               <Input type='text' name='name' className='mr-3' placeholder="Full name" required='true' onChange={this.handleChange}/>
+               <Input type='email' name='email' className='mr-3' placeholder="Email" required='true' onChange={this.handleChange}/>
                <Input type='password' name='password' className="ml-3" placeholder="Password" required='true' onChange={this.handleChange}/>
              </InputGroup>
                <InputGroup className='mt-4'>
@@ -73,14 +71,14 @@ class Login extends React.Component{
             <InputGroup className='justify-content-center'>
               or
             </InputGroup>
-            <InputGroup>
-            <Button color='primary' block>
+            <InputGroup className='justify-content-center'>
               <Link to='/signin'>
-            <small className='text-white'>
-            CONTINUE TO SIGNIN
-            </small>
+                <Button color='primary'>
+                  <small className='text-white'>
+                  CONTINUE TO SIGNIN
+                  </small>
+                  </Button>
               </Link>
-          </Button>
           </InputGroup>
         </Row>
           </Col>

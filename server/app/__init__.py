@@ -16,10 +16,12 @@ db.create_all()
 migrate = Migrate(app, db)
 from app import models
 from .models import User
-
+# login Blueprint
 from .login import login as login_blueprint
 app.register_blueprint(login_blueprint)
-
+# signin Blueprint
+from .signin import signin as signin_blueprint
+app.register_blueprint(signin_blueprint)
 #route to '/'
 @app.route('/')
 def data():
@@ -28,6 +30,3 @@ def data():
     return render_template('home.html')
 
 # route to signin
-@app.route('/signin')
-def signin():
-    return render_template('home.html')

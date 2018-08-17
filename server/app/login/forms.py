@@ -4,5 +4,7 @@ from wtforms.validators import DataRequired,Email
 
 from ..models import User
 
-class RegistrationForm(FlaskForm):
-    Form 
+class LoginForm(FlaskForm):
+
+    email=StringField('email',validators=[DataRequired])
+    password=StringField('password',validators=[DataRequired])

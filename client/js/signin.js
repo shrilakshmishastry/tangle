@@ -1,6 +1,7 @@
 import React,{Component} from  'react';
 import {Col,Row,Container,Button,Form,FormGroup,InputGroup,Input} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 require('./../images/landing.png')
 const siginStyle = {
   fontFamily:'Source Sans Pro sans-serif',
@@ -12,8 +13,7 @@ class Signin extends React.Component{
    this.state = {
      name:'',
      password:'',
-     email:'',
-     login:''
+     email:''
    };
    this.handleChange=this.handleChange.bind(this);
    this.handleSubmit=this.handleSubmit.bind(this);
@@ -30,8 +30,25 @@ class Signin extends React.Component{
  }
  handleSubmit(event){
      event.preventDefault();
-         console.log(this.state.name);
-         console.log(this.state.password);
+     axios.post('/signin',
+       {
+         name:this.state.name,
+         password:this.state.password,
+         email:this.state.email
+     })
+     .then(response =>{
+       if(response.data=='success')
+       {
+         this.props.history.push({
+           pathname:'/'
+         })
+       }
+       else{
+         this.props.history.push({
+           pathname:'/login'
+         })
+       }
+     })
  }
   render(){
     return(

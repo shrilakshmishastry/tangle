@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component,props} from 'react';
 import {NavItem,Navbar,Collapse,
   NavbarToggler,
   NavbarBrand,
@@ -6,21 +6,43 @@ import {NavItem,Navbar,Collapse,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,Button} from 'reactstrap';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {push} from 'react-router-redux';
 // css for Header component
 const headerStyle={
     fontFamily: 'Open Sans, sans-serif',
 };
+const LoginButton =(props)=>{
+  return(
+    <Link to='/login'>
+    <Button onClick={props.onClick}>
+      Login
+    </Button>
+    </Link>
+  );
+}
+const LogoutButton = (props)=>{
+  return (
+    <Link to='/'>
+    <Button onClick={props.onClick}>
+      Logout
+    </Button>
+    </Link>
+  );
+}
 // component for Navbar
 class Header extends React.Component{
   constructor(props){
     super(props);
     this.toggle=this.toggle.bind(this);
+    this.handleLoginClick=this.handleLoginClick.bind(this);
+    this.handleLogoutClick=this.handleLogoutClick.bind(this);
     // state variable
     this.state={
       isOpen:false,
-      login:"login",
+      isLoggedIn:false,
       account:'Open an account'
+
       };
 
   }
@@ -30,7 +52,26 @@ class Header extends React.Component{
       isOpen: !this.state.isOpen
     });
   }
+  handleLoginClick(){
+    this.setState({
+      isLoggedIn:true
+    });
+
+  }
+  handleLogoutClick(){
+    this.setState({
+      isLoggedIn:false
+    });
+  }
+
   render(){
+    const isLoggedIn = this.state.isLoggedIn;
+    let button;
+    if (isLoggedIn) {
+     button = <LogoutButton onClick={this.handleLogoutClick} />;
+   } else {
+     button = <LoginButton onClick={this.handleLoginClick} />
+   }
     return(
       <div style={headerStyle}>
       <Navbar color='light' light expand='md'  >
@@ -43,13 +84,9 @@ class Header extends React.Component{
             <NavItem className=' mt-md-2'>
               <Link to='#' className=' text-dark'>{this.state.account}</Link>
             </NavItem>
-             <NavItem className='ml-md-5'>
-              <Link to='/login' className=' text-dark'>
-                <Button outline color="secondary">
-                  {this.state.login}
-                </Button>
-              </Link>
-            </NavItem>
+             <NavItem className='ml-md-5' >
+             {button}
+          </NavItem>
           </Nav>
         </Collapse>
         </Navbar>

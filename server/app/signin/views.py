@@ -7,6 +7,8 @@ print('shrilakshmi')
 
 @signin.route('/signin',methods=['GET','POST'])
 def signin_data():
+    if request.method == 'GET':
+        return render_template('home.html')
     if request.method == 'POST':
         print(request.is_json)
         data=request.get_json()
@@ -19,5 +21,5 @@ def signin_data():
             db.session.commit()
             return ('success')
         else:
-            return ('false')    
+            return ('false')
     return render_template('home.html')

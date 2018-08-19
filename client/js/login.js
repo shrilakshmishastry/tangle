@@ -35,7 +35,31 @@ class Login extends React.Component{
           email:this.state.email
       })
       .then(response =>{
-        console.log(response.data);
+          if(response.data=='sigin'){
+            this.props.history.push({
+              pathname:'/signin'
+            })
+          }
+          else if (response.data=='logged in ') {
+            this.props.history.push({
+              pathname:'/',
+              state:{
+                login:this.state.login
+              }
+            })
+          }
+          else if (response.data=='exist') {
+            this.setState({
+              login:'true'
+            });
+            this.props.history.push({
+              pathname:'/',
+              state:{
+                login:this.state.login
+              }
+            })
+          }
+
       })
 
   }
